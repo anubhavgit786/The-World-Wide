@@ -25,13 +25,21 @@ const addCity = asyncHandler( async (req ,res) => {
     position: {lat , lng},
    })
 
-   const createdPlace = await Place.findById(place._id);
+   
 
-   if(!createdPlace) {
+   if(!place) {
       throw new Error( "Something went wrong while saving the place in database");
    }
 
-  res.status(201).json( new ApiResponse(200 , createdPlace , "Place added successfully" ,  ))
+  res.status(201).json( new ApiResponse(200 ,
+     {_id: place._id,
+      cityName: cityName ,
+    country : country,
+    emoji : emoji,
+    date: date,
+    notes : notes,
+  position: {lat , lng},} ,
+   "Place added successfully" ,  ))
 
 })
 

@@ -15,7 +15,11 @@ app.use(cookieParser())
 //routes
 
 import citiesRouter from './routes/cities.routes.js'
+import reversegeocodingRouter from './routes/reversegeocoding.routers.js'
+import userRouter from './routes/users.routers.js'
 
 app.use("/cities" , citiesRouter)
+app.use("/reversegeocoding" ,reversegeocodingRouter)
+app.use("/user" , userRouter)
 
 export {app}
