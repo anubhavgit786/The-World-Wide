@@ -8,8 +8,8 @@ import { verifyJWT } from "../middlewares/auth.middlewares.js";
 const router = Router()
 
 router.route("/addCity").post(verifyJWT,addCity)
-router.route("/allCities").get(allCity)
-router.route("/oneCity/:id").get(oneCity)
+router.route("/allCities").get(verifyJWT , allCity)
+router.route("/oneCity/:id").get(verifyJWT ,oneCity)
 router.route("/deleteCity/:id").post(verifyJWT , deleteCity)
 
 export default router

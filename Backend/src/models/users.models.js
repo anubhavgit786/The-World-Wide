@@ -26,10 +26,7 @@ const usersSchema = new mongoose.Schema( {
         required :true,
     },
     
-    visitedPlaces :[{
-      type: mongoose.Schema.Types.ObjectId,
-      ref : "Place"
-    }],
+    
 
     refreshToken:{
         type:String,

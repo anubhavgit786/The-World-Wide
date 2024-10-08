@@ -1,5 +1,6 @@
 import {asyncHandler} from "../utils/asyncHandler.js"
 import {Place} from "../models/places.models.js"
+import { visitedPlaces } from "../models/visitedPlaces.models.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 
@@ -29,6 +30,15 @@ const addCity = asyncHandler( async (req ,res) => {
 
    if(!place) {
       throw new Error( "Something went wrong while saving the place in database");
+   }
+
+   const visitedCity = await visitedPlaces.create({
+      city : place._id,
+      user : req.user._id 
+   }  )
+
+   if(!visitedCity) {
+      throw new Error( "Something went wrong while adding the visited place of user");
    }
 
   res.status(201).json( new ApiResponse(200 ,
